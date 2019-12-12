@@ -25,6 +25,10 @@
 :hasEnergyStatistics rdf:type owl:ObjectProperty .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLCC
+:hasLCC rdf:type owl:ObjectProperty .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLifeCycleAssesment
 :hasLifeCycleAssesment rdf:type owl:ObjectProperty .
 
@@ -41,9 +45,21 @@
 :hasReward rdf:type owl:ObjectProperty .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#refersTo
+:refersTo rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Data properties
 #################################################################
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EnergyMax
+:EnergyMax rdf:type owl:DatatypeProperty .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EnergyMin
+:EnergyMin rdf:type owl:DatatypeProperty .
+
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerMax
 :PowerMax rdf:type owl:DatatypeProperty .
@@ -59,6 +75,10 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerSkewness
 :PowerSkewness rdf:type owl:DatatypeProperty .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasDuration
+:hasDuration rdf:type owl:DatatypeProperty .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEmissions
@@ -113,12 +133,35 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Capital
 :Capital rdf:type owl:Class ;
-         rdfs:subClassOf :LifeCycleCost ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasValue ;
-                           owl:allValuesFrom xsd:float
-                         ] ;
+         rdfs:subClassOf :LifeCycleCost ;
          rdfs:label "Capital Cost" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ComfortManagement
+:ComfortManagement rdf:type owl:Class ;
+                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                   rdfs:comment "An automation service offered to the users on the way to ensure comfort preservation" ;
+                   rdfs:label "Comfort Preservation" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ConsInstallation
+:ConsInstallation rdf:type owl:Class ;
+                  rdfs:subClassOf :Construction .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ConsTransport
+:ConsTransport rdf:type owl:Class ;
+               rdfs:subClassOf :Construction .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Construction
+:Construction rdf:type owl:Class ;
+              rdfs:subClassOf :LifeCycleAssesment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Deconstruction
+:Deconstruction rdf:type owl:Class ;
+                rdfs:subClassOf :EndofLife .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#DieselGen
@@ -127,15 +170,33 @@
            rdfs:label "Diesel Generator" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Disposal
+:Disposal rdf:type owl:Class ;
+          rdfs:subClassOf :EndofLife .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EV
 :EV rdf:type owl:Class ;
     rdfs:subClassOf <https://saref.etsi.org/saref#Storage> ;
     rdfs:label "Electric Vehicles" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EndofLife
+:EndofLife rdf:type owl:Class ;
+           rdfs:subClassOf :LifeCycleAssesment .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Energy
 :Energy rdf:type owl:Class ;
-        rdfs:subClassOf :Statistics ;
+        rdfs:subClassOf :Statistics ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :EnergyMax ;
+                          owl:allValuesFrom xsd:float
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :EnergyMin ;
+                          owl:allValuesFrom xsd:float
+                        ] ;
         rdfs:label "Energy Statistics" .
 
 
@@ -146,20 +207,29 @@
              rdfs:label "Engineering Cost" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Flexibility
+:Flexibility rdf:type owl:Class ;
+             rdfs:subClassOf <https://saref.etsi.org/saref#Property> ;
+             rdfs:comment "Energy System Flexibility" ;
+             rdfs:label "Flexibility" .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#HVAC
 :HVAC rdf:type owl:Class ;
       rdfs:subClassOf <https://saref.etsi.org/saref#Load> .
 
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Installation
-:Installation rdf:type owl:Class ;
-              rdfs:subClassOf :LifeCycleCost ;
-              rdfs:label "Installation Cost" .
-
-
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleAssesment
 :LifeCycleAssesment rdf:type owl:Class ;
                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasLCC ;
+                                      owl:allValuesFrom :LifeCycleCost
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasDuration ;
+                                      owl:allValuesFrom xsd:float
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasEmissions ;
                                       owl:allValuesFrom rdfs:Literal
                                     ] ,
@@ -168,11 +238,15 @@
                                       owl:allValuesFrom rdfs:Literal
                                     ] ;
                     rdfs:comment "Device Lifecycle class to represent the different properties that have to be considered in the model for the project" ;
-                    rdfs:label "Device LifeCycle" .
+                    rdfs:label "Device Lifecycle" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleCost
 :LifeCycleCost rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://saref.etsi.org/saref#hasValue> ;
+                                 owl:allValuesFrom xsd:float
+                               ] ;
                rdfs:comment "Lifecycle Cost Parameters for the Energy Systems" ;
                rdfs:label "Lifecycle Cost" .
 
@@ -181,6 +255,21 @@
 :Maintenance rdf:type owl:Class ;
              rdfs:subClassOf :Operational ;
              rdfs:label "Maintenance Cost" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Manufacturing
+:Manufacturing rdf:type owl:Class ;
+               rdfs:subClassOf :ProductStage .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#MaterialSupply
+:MaterialSupply rdf:type owl:Class ;
+                rdfs:subClassOf :ProductStage .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Operation
+:Operation rdf:type owl:Class ;
+           rdfs:subClassOf :Use .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Operational
@@ -217,10 +306,39 @@
        rdfs:label "Power Statistics" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ProductStage
+:ProductStage rdf:type owl:Class ;
+              rdfs:subClassOf :LifeCycleAssesment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Repair
+:Repair rdf:type owl:Class ;
+        rdfs:subClassOf :Use .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Replacement
+:Replacement rdf:type owl:Class ;
+             rdfs:subClassOf :Use .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Reward
 :Reward rdf:type owl:Class ;
         rdfs:subClassOf <https://saref.etsi.org/saref#Property> ;
         rdfs:comment "This is the reward from participating in innovative Energy Services (like DR)" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#SelfConsumption
+:SelfConsumption rdf:type owl:Class ;
+                 rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                 rdfs:comment "This is the service about self consumption optimization.. Balancing local generation with demand" ;
+                 rdfs:label "Self Consumption Optimization" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ServiceAggregator
+:ServiceAggregator rdf:type owl:Class ;
+                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                   rdfs:comment "This is the load control from 3rd party aggregators to enable participation in DR markets (services to DSOs, anchillary services etc...)" ;
+                   rdfs:label "Service to Aggregator" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Statistics
@@ -229,39 +347,34 @@
             rdfs:label "Energy Statistics" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Transport
+:Transport rdf:type owl:Class ;
+           rdfs:subClassOf :EndofLife .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Use
+:Use rdf:type owl:Class ;
+     rdfs:subClassOf :LifeCycleAssesment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#UseMaintenance
+:UseMaintenance rdf:type owl:Class ;
+                rdfs:subClassOf :Use .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#WasteProcess
+:WasteProcess rdf:type owl:Class ;
+              rdfs:subClassOf :EndofLife .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Wind
 :Wind rdf:type owl:Class ;
       rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
       rdfs:label "Wind Turbines (small scale)" .
 
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#comfortManagement
-:comfortManagement rdf:type owl:Class ;
-                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
-                   rdfs:comment "An automation service offered to the users on the way to ensure comfort preservation" ;
-                   rdfs:label "Comfort Preservation" .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#selfConsumption
-:selfConsumption rdf:type owl:Class ;
-                 rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
-                 rdfs:comment "This is the service about self consumption optimization.. Balancing local generation with demand" ;
-                 rdfs:label "Self Consumption Optimization" .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#serviceAggregator
-:serviceAggregator rdf:type owl:Class ;
-                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
-                   rdfs:comment "This is the load control from 3rd party aggregators to enable participation in DR markets (services to DSOs, anchillary services etc...)" ;
-                   rdfs:label "service to Aggregator" .
-
-
 ###  https://saref.etsi.org/saref#Device
 <https://saref.etsi.org/saref#Device> rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasLifeCycleAssesment ;
-                                                        owl:someValuesFrom :LifeCycleAssesment
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
                                                         owl:onProperty :hasLifeCycleParameters ;
                                                         owl:someValuesFrom :LifeCycleAssesment
                                                       ] ,
@@ -288,6 +401,10 @@
                                                          owl:allValuesFrom :Reward
                                                        ] ,
                                                        [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :refersTo ;
+                                                         owl:allValuesFrom :BaselineProfile
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
                                                          owl:onProperty :hasEndTime ;
                                                          owl:allValuesFrom xsd:dateTime
                                                        ] ,
@@ -302,18 +419,15 @@
 #################################################################
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Disposal
-:Disposal rdf:type owl:NamedIndividual ,
-                   :LifeCycleAssesment .
+:Disposal rdf:type owl:NamedIndividual .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Production
-:Production rdf:type owl:NamedIndividual ,
-                     :LifeCycleAssesment .
+:Production rdf:type owl:NamedIndividual .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Transport
-:Transport rdf:type owl:NamedIndividual ,
-                    :LifeCycleAssesment .
+:Transport rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

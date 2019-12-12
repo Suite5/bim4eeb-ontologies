@@ -8,7 +8,7 @@
 
 <https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl> rdf:type owl:Ontology ;
                                                                                          owl:imports <http://www.w3.org/ns/ssn/> ,
-                                                                                              <https://raw.githubusercontent.com/w3c-lbd-cg/bot/master/bot.ttl> ;
+                                                                                                     <https://raw.githubusercontent.com/w3c-lbd-cg/bot/master/bot.ttl> ;
                                                                                          <http://purl.org/dc/terms/creator> "SUITE5 & RISE" ;
                                                                                          <http://purl.org/dc/terms/description> "The vocabulary extends W3C Semantic Sensor Network Ontology (SSN) with classes and properties to represent the data about building acoustics." ;
                                                                                          <http://purl.org/dc/terms/license> "This ontology is distributed under Apache License Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)" ;
@@ -25,8 +25,20 @@ The puspose of the  ontology is to provide an operational framework for the orch
 :hasConstrains rdf:type owl:ObjectProperty .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#hasJointInsulation
+:hasJointInsulation rdf:type owl:ObjectProperty .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#hasProperties
 :hasProperties rdf:type owl:ObjectProperty .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#hasSoundInsulation
+:hasSoundInsulation rdf:type owl:ObjectProperty .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#hasSoundPowerLevel
+:hasSoundPowerLevel rdf:type owl:ObjectProperty .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#hasSource
@@ -57,9 +69,9 @@ The puspose of the  ontology is to provide an operational framework for the orch
 #    Classes
 #################################################################
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#AcousticProperties
-:AcousticProperties rdf:type owl:Class ;
-                    rdfs:comment "The list of accoustic proberties for the selected building elements" ;
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#AcousticParameters
+:AcousticParameters rdf:type owl:Class ;
+                    rdfs:comment "The list of accoustic proberties for the selected building systems" ;
                     rdfs:label "Acoustic Properties" .
 
 
@@ -81,11 +93,7 @@ The puspose of the  ontology is to provide an operational framework for the orch
                       rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :hasSource ;
-                                        owl:someValuesFrom <https://w3id.org/bot#Element>
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :madeBySensor ;
-                                        owl:allValuesFrom :NoiseSensor
+                                        owl:someValuesFrom :SoundSource
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :observedProperty ;
@@ -97,8 +105,7 @@ The puspose of the  ontology is to provide an operational framework for the orch
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#AcousticsPerformance
 :AcousticsPerformance rdf:type owl:Class ;
-                      rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> ,
-                                      [ rdf:type owl:Restriction ;
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
                                         owl:onProperty :hasConstrains ;
                                         owl:someValuesFrom :AcousticRequirements
                                       ] ;
@@ -111,6 +118,86 @@ The puspose of the  ontology is to provide an operational framework for the orch
                    rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> ;
                    rdfs:comment "The specific property to be measured by the sensing device" ;
                    rdfs:label "Acoustic Property" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#AirborneSoundInsulation
+:AirborneSoundInsulation rdf:type owl:Class ;
+                         rdfs:subClassOf :AcousticParameters .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#AirborneSoundeImprovement
+:AirborneSoundeImprovement rdf:type owl:Class ;
+                           rdfs:subClassOf :AcousticParameters .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Door
+:Door rdf:type owl:Class ;
+      rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasSoundInsulation ;
+                        owl:allValuesFrom :AirborneSoundInsulation
+                      ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Elevator
+:Elevator rdf:type owl:Class ;
+          rdfs:subClassOf :ServiceEquipment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FacadeElement
+:FacadeElement rdf:type owl:Class ;
+               rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasSoundInsulation ;
+                                 owl:allValuesFrom :AirborneSoundInsulation
+                               ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FlankingSoundTransmission
+:FlankingSoundTransmission rdf:type owl:Class ;
+                           rdfs:subClassOf :AcousticParameters .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Floor
+:Floor rdf:type owl:Class ;
+       rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasSoundInsulation ;
+                         owl:allValuesFrom :AirborneSoundInsulation
+                       ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FloorCovering
+:FloorCovering rdf:type owl:Class ;
+               rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasSoundInsulation ;
+                                 owl:allValuesFrom :AirborneSoundInsulation
+                               ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#HVAC
+:HVAC rdf:type owl:Class ;
+      rdfs:subClassOf :ServiceEquipment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#ImpactNoise
+:ImpactNoise rdf:type owl:Class ;
+             rdfs:subClassOf :AcousticParameters .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Joint
+:Joint rdf:type owl:Class ;
+       rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasJointInsulation ;
+                         owl:allValuesFrom :JointSoundInsulation
+                       ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#JointSoundInsulation
+:JointSoundInsulation rdf:type owl:Class ;
+                      rdfs:subClassOf :AcousticParameters .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#NoiseSensor
@@ -128,23 +215,82 @@ The puspose of the  ontology is to provide an operational framework for the orch
              rdfs:label "Noise Sensor" .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#ServiceEquipment
+:ServiceEquipment rdf:type owl:Class ;
+                  rdfs:subClassOf :SoundSource .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#SoundAbsorption
+:SoundAbsorption rdf:type owl:Class ;
+                 rdfs:subClassOf :AcousticParameters .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#SoundClass
 :SoundClass rdf:type owl:Class ;
             rdfs:subClassOf :AcousticRequirements ;
             rdfs:label "Sound Class" .
 
 
-###  https://w3id.org/bot#Element
-<https://w3id.org/bot#Element> rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :hasProperties ;
-                                                 owl:someValuesFrom :AcousticProperties
-                                               ] .
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#SoundSource
+:SoundSource rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSoundPowerLevel ;
+                               owl:someValuesFrom :AcousticsPerformance
+                             ] ;
+             rdfs:comment "The list of sound sources in the building environment" ;
+             rdfs:label "Sound Source" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#SuspendedCeiling
+:SuspendedCeiling rdf:type owl:Class ;
+                  rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasSoundInsulation ;
+                                    owl:allValuesFrom :AirborneSoundInsulation
+                                  ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Talk
+:Talk rdf:type owl:Class ;
+      rdfs:subClassOf :SoundSource .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#VibrationReductionIndex
+:VibrationReductionIndex rdf:type owl:Class ;
+                         rdfs:subClassOf :AcousticParameters .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Wall
+:Wall rdf:type owl:Class ;
+      rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasSoundInsulation ;
+                        owl:allValuesFrom :AirborneSoundInsulation
+                      ] .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#WasteWater
+:WasteWater rdf:type owl:Class ;
+            rdfs:subClassOf :ServiceEquipment .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Window
+:Window rdf:type owl:Class ;
+        rdfs:subClassOf <https://w3id.org/bot#Element> ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasSoundInsulation ;
+                          owl:allValuesFrom :AirborneSoundInsulation
+                        ] .
 
 
 ###  https://w3id.org/bot#Zone
 <https://w3id.org/bot#Zone> rdfs:subClassOf [ rdf:type owl:Restriction ;
                                               owl:onProperty :hasConstrains ;
                                               owl:someValuesFrom :AcousticRequirements
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty <https://w3id.org/bot#hasElement> ;
+                                              owl:someValuesFrom <https://w3id.org/bot#Element>
                                             ] .
 
 
