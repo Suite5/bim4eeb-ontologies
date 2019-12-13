@@ -241,12 +241,14 @@ The puspose of the  ontology is to provide an operational framework for the orch
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hasSoundInsulation ;
                         owl:allValuesFrom :AirborneSoundInsulation
-                      ] .
+                      ] ;
+      rdfs:comment "Building Door" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Elevator
 :Elevator rdf:type owl:Class ;
-          rdfs:subClassOf :ServiceEquipment .
+          rdfs:subClassOf :ServiceEquipment ;
+          rdfs:comment "Building Elevator" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FacadeElement
@@ -255,7 +257,8 @@ The puspose of the  ontology is to provide an operational framework for the orch
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :hasSoundInsulation ;
                                  owl:allValuesFrom :AirborneSoundInsulation
-                               ] .
+                               ] ;
+               rdfs:comment "Building Facade" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FlankingSoundTransmission
@@ -270,7 +273,8 @@ The puspose of the  ontology is to provide an operational framework for the orch
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasSoundInsulation ;
                          owl:allValuesFrom :AirborneSoundInsulation
-                       ] .
+                       ] ;
+       rdfs:comment "Building Floor" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#FloorCovering
@@ -279,12 +283,14 @@ The puspose of the  ontology is to provide an operational framework for the orch
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :hasSoundInsulation ;
                                  owl:allValuesFrom :AirborneSoundInsulation
-                               ] .
+                               ] ;
+               rdfs:comment "Floor Covering Element" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#HVAC
 :HVAC rdf:type owl:Class ;
-      rdfs:subClassOf :ServiceEquipment .
+      rdfs:subClassOf :ServiceEquipment ;
+      rdfs:comment "HVAC Unit of the building" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#ImpactNoise
@@ -299,7 +305,8 @@ The puspose of the  ontology is to provide an operational framework for the orch
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasJointInsulation ;
                          owl:allValuesFrom :JointSoundInsulation
-                       ] .
+                       ] ;
+       rdfs:comment "Joint Section of the building" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#JointSoundInsulation
@@ -321,7 +328,8 @@ The puspose of the  ontology is to provide an operational framework for the orch
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#ServiceEquipment
 :ServiceEquipment rdf:type owl:Class ;
-                  rdfs:subClassOf :SoundSource .
+                  rdfs:subClassOf :SoundSource ;
+                  rdfs:comment "Sound generation source equipment" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#SoundAbsorption
@@ -364,12 +372,14 @@ The puspose of the  ontology is to provide an operational framework for the orch
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :hasSoundInsulation ;
                                     owl:allValuesFrom :AirborneSoundInsulation
-                                  ] .
+                                  ] ;
+                  rdfs:comment "Suspended Ceiling Element" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Talk
 :Talk rdf:type owl:Class ;
-      rdfs:subClassOf :SoundSource .
+      rdfs:subClassOf :SoundSource ;
+      rdfs:comment "Sound generation source other" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#VibrationReductionIndex
@@ -383,12 +393,14 @@ The puspose of the  ontology is to provide an operational framework for the orch
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hasSoundInsulation ;
                         owl:allValuesFrom :AirborneSoundInsulation
-                      ] .
+                      ] ;
+      rdfs:comment "Buidling Wall" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#WasteWater
 :WasteWater rdf:type owl:Class ;
-            rdfs:subClassOf :ServiceEquipment .
+            rdfs:subClassOf :ServiceEquipment ;
+            rdfs:comment "Waste water from the water source" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/buildingAcoustics.ttl#Window
@@ -397,7 +409,8 @@ The puspose of the  ontology is to provide an operational framework for the orch
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hasSoundInsulation ;
                           owl:allValuesFrom :AirborneSoundInsulation
-                        ] .
+                        ] ;
+        rdfs:comment "Building Window" .
 
 
 ###  https://w3id.org/bot#Element
