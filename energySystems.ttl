@@ -18,83 +18,103 @@
 #################################################################
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasCost
-:hasCost rdf:type owl:ObjectProperty .
+:hasCost rdf:type owl:ObjectProperty ;
+         rdfs:comment "the device/ energy system is associated with an operational cost" ;
+         rdfs:label "has Cost" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEnergyStatistics
-:hasEnergyStatistics rdf:type owl:ObjectProperty .
+:hasEnergyStatistics rdf:type owl:ObjectProperty ;
+                     rdfs:comment "An energy system has some typical energy statistics" ;
+                     rdfs:label "has Energy Statistics" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLCC
-:hasLCC rdf:type owl:ObjectProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLifeCycleAssesment
-:hasLifeCycleAssesment rdf:type owl:ObjectProperty .
+:hasLCC rdf:type owl:ObjectProperty ;
+        rdfs:comment "relationship between LCA and LCC" ;
+        rdfs:label "has Lifecycle Cost" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLifeCycleParameters
-:hasLifeCycleParameters rdf:type owl:ObjectProperty .
+:hasLifeCycleParameters rdf:type owl:ObjectProperty ;
+                        rdfs:comment "relationship of a device and its LCA" ;
+                        rdfs:label "has Lifecycle Parameters" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasPowerStatistics
-:hasPowerStatistics rdf:type owl:ObjectProperty .
+:hasPowerStatistics rdf:type owl:ObjectProperty ;
+                    rdfs:comment "The eneryg system has some power statistics" ;
+                    rdfs:label "has Power Statistics" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasReward
-:hasReward rdf:type owl:ObjectProperty .
+:hasReward rdf:type owl:ObjectProperty ;
+           rdfs:comment "A service of the energy system is associated with a reward for this service" ;
+           rdfs:label "has Reward" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#refersTo
-:refersTo rdf:type owl:ObjectProperty .
+:refersTo rdf:type owl:ObjectProperty ;
+          rdfs:comment "A service of an energy system has as a reference an baseline profile" ;
+          rdfs:label "refers To" .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EnergyMax
-:EnergyMax rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EnergyMin
-:EnergyMin rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerMax
-:PowerMax rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerMin
-:PowerMin rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerSTD
-:PowerSTD rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PowerSkewness
-:PowerSkewness rdf:type owl:DatatypeProperty .
-
-
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasDuration
-:hasDuration rdf:type owl:DatatypeProperty .
+:hasDuration rdf:type owl:DatatypeProperty ;
+             rdfs:comment "The total duration of the process" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEmissions
-:hasEmissions rdf:type owl:DatatypeProperty .
+:hasEmissions rdf:type owl:DatatypeProperty ;
+              rdfs:comment "The amount of Emissions in LCA analysis" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEndTime
-:hasEndTime rdf:type owl:DatatypeProperty .
+:hasEndTime rdf:type owl:DatatypeProperty ;
+            rdfs:comment "The end  time of a process|" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEnergyMax
+:hasEnergyMax rdf:type owl:DatatypeProperty ;
+              rdfs:comment "The max value for the energy (daily) profile of an energy system" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEnergyMin
+:hasEnergyMin rdf:type owl:DatatypeProperty ;
+              rdfs:comment "The min value for the energy (daily) profile of an energy system" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEnergyUse
 :hasEnergyUse rdf:type owl:DatatypeProperty .
 
 
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasPowerMax
+:hasPowerMax rdf:type owl:DatatypeProperty ;
+             rdfs:comment "The max value for the power profile of an energy system" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasPowerMin
+:hasPowerMin rdf:type owl:DatatypeProperty ;
+             rdfs:comment "The min value for the power profile of an energy system" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasPowerSTD
+:hasPowerSTD rdf:type owl:DatatypeProperty ;
+             rdfs:comment "Power Standard deviation of a device" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasPowerSkewness
+:hasPowerSkewness rdf:type owl:DatatypeProperty ;
+                  rdfs:comment "Power Skewness of a device power profile" .
+
+
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasStartTime
-:hasStartTime rdf:type owl:DatatypeProperty .
+:hasStartTime rdf:type owl:DatatypeProperty ;
+              rdfs:comment "The start time of a process|" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasValue
@@ -114,7 +134,15 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#BaselineProfile
 :BaselineProfile rdf:type owl:Class ;
-                 rdfs:subClassOf <https://saref.etsi.org/saref#Profile> ;
+                 rdfs:subClassOf <https://saref.etsi.org/saref#Profile> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                   owl:someValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                   owl:someValuesFrom xsd:string
+                                 ] ;
                  rdfs:comment "Along wiht the actual profile, the baseline profile of each device should be defined for the participation in energy services" ;
                  rdfs:label "Baseline Profile" .
 
@@ -122,18 +150,21 @@
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Batteries
 :Batteries rdf:type owl:Class ;
            rdfs:subClassOf <https://saref.etsi.org/saref#Storage> ;
+           rdfs:comment "Residential, behind the meter battery system" ;
            rdfs:label "Battery Storage" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#CHP
 :CHP rdf:type owl:Class ;
      rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
-     rdfs:label "Small CHPs for local generation" .
+     rdfs:comment "Small CHPs for local generation" ;
+     rdfs:label "Combined Heat  & Power" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Capital
 :Capital rdf:type owl:Class ;
          rdfs:subClassOf :LifeCycleCost ;
+         rdfs:comment "The capital cost required for the investment on Energy Systems" ;
          rdfs:label "Capital Cost" .
 
 
@@ -146,27 +177,33 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ConsInstallation
 :ConsInstallation rdf:type owl:Class ;
-                  rdfs:subClassOf :Construction .
+                  rdfs:subClassOf :Construction ;
+                  rdfs:comment "Installation of the energy system" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ConsTransport
 :ConsTransport rdf:type owl:Class ;
-               rdfs:subClassOf :Construction .
+               rdfs:subClassOf :Construction ;
+               rdfs:comment "Transport of Energy System to the destination" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Construction
 :Construction rdf:type owl:Class ;
-              rdfs:subClassOf :LifeCycleAssesment .
+              rdfs:subClassOf :LifeCycleAssesment ;
+              rdfs:comment "Construction phase of renovation" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Deconstruction
 :Deconstruction rdf:type owl:Class ;
-                rdfs:subClassOf :EndofLife .
+                rdfs:subClassOf :EndofLife ;
+                rdfs:comment "The deconstruction of Energy System" ;
+                rdfs:label "Deconstruction process" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#DieselGen
 :DieselGen rdf:type owl:Class ;
            rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+           rdfs:comment "Small Diesel Generator for back up" ;
            rdfs:label "Diesel Generator" .
 
 
@@ -178,23 +215,26 @@
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EV
 :EV rdf:type owl:Class ;
     rdfs:subClassOf <https://saref.etsi.org/saref#Storage> ;
+    rdfs:comment "Charging points and the associated EVs" ;
     rdfs:label "Electric Vehicles" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EndofLife
 :EndofLife rdf:type owl:Class ;
-           rdfs:subClassOf :LifeCycleAssesment .
+           rdfs:subClassOf :LifeCycleAssesment ;
+           rdfs:comment "End of life period for the Energy System" ;
+           rdfs:label "End of Life" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Energy
 :Energy rdf:type owl:Class ;
         rdfs:subClassOf :Statistics ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :EnergyMax ;
+                          owl:onProperty :hasEnergyMax ;
                           owl:allValuesFrom xsd:float
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :EnergyMin ;
+                          owl:onProperty :hasEnergyMin ;
                           owl:allValuesFrom xsd:float
                         ] ;
         rdfs:label "Energy Statistics" .
@@ -216,7 +256,9 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#HVAC
 :HVAC rdf:type owl:Class ;
-      rdfs:subClassOf <https://saref.etsi.org/saref#Load> .
+      rdfs:subClassOf <https://saref.etsi.org/saref#Load> ;
+      rdfs:comment "Heating Cooling and Ventilation systems" ;
+      rdfs:label "HVAC Systems" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleAssesment
@@ -224,6 +266,14 @@
                     rdfs:subClassOf [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasLCC ;
                                       owl:allValuesFrom :LifeCycleCost
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                      owl:someValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                      owl:someValuesFrom xsd:string
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasDuration ;
@@ -244,6 +294,18 @@
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleCost
 :LifeCycleCost rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://saref.etsi.org/saref#isMeasuredIn> ;
+                                 owl:allValuesFrom <https://saref.etsi.org/saref#Currency>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                 owl:someValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                 owl:someValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty <https://saref.etsi.org/saref#hasValue> ;
                                  owl:allValuesFrom xsd:float
                                ] ;
@@ -254,33 +316,39 @@
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Maintenance
 :Maintenance rdf:type owl:Class ;
              rdfs:subClassOf :Operational ;
+             rdfs:comment "Maintenance Costs for the Energy System" ;
              rdfs:label "Maintenance Cost" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Manufacturing
 :Manufacturing rdf:type owl:Class ;
-               rdfs:subClassOf :ProductStage .
+               rdfs:subClassOf :ProductStage ;
+               rdfs:comment "Manufacturing stage for the Energy System" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#MaterialSupply
 :MaterialSupply rdf:type owl:Class ;
-                rdfs:subClassOf :ProductStage .
+                rdfs:subClassOf :ProductStage ;
+                rdfs:comment "Material Supply for the early stage of r the Energy System" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Operation
 :Operation rdf:type owl:Class ;
-           rdfs:subClassOf :Use .
+           rdfs:subClassOf :Use ;
+           rdfs:comment "Actual Operation of the energy system" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Operational
 :Operational rdf:type owl:Class ;
              rdfs:subClassOf :LifeCycleCost ;
+             rdfs:comment "The operational costs for the Energy System" ;
              rdfs:label "Operational Costs" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PV
 :PV rdf:type owl:Class ;
     rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+    rdfs:comment "Small scale Photovoltaics" ;
     rdfs:label "Rooftop PVs" .
 
 
@@ -288,19 +356,19 @@
 :Power rdf:type owl:Class ;
        rdfs:subClassOf :Statistics ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :PowerMax ;
+                         owl:onProperty :hasPowerMax ;
                          owl:allValuesFrom xsd:float
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :PowerMin ;
+                         owl:onProperty :hasPowerMin ;
                          owl:allValuesFrom xsd:float
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :PowerSTD ;
+                         owl:onProperty :hasPowerSTD ;
                          owl:allValuesFrom xsd:float
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :PowerSkewness ;
+                         owl:onProperty :hasPowerSkewness ;
                          owl:allValuesFrom xsd:float
                        ] ;
        rdfs:label "Power Statistics" .
@@ -308,17 +376,20 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ProductStage
 :ProductStage rdf:type owl:Class ;
-              rdfs:subClassOf :LifeCycleAssesment .
+              rdfs:subClassOf :LifeCycleAssesment ;
+              rdfs:comment "Production phase for the Energy System" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Repair
 :Repair rdf:type owl:Class ;
-        rdfs:subClassOf :Use .
+        rdfs:subClassOf :Use ;
+        rdfs:comment "LCA analysis during the repair phase" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Replacement
 :Replacement rdf:type owl:Class ;
-             rdfs:subClassOf :Use .
+             rdfs:subClassOf :Use ;
+             rdfs:comment "LCA analysis during the replacement  phase" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Reward
@@ -343,6 +414,10 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Statistics
 :Statistics rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                              owl:someValuesFrom xsd:string
+                            ] ;
             rdfs:comment "Generic energy and power statistics that characterize the daily curve of each eneryg related device" ;
             rdfs:label "Energy Statistics" .
 
@@ -354,23 +429,27 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Use
 :Use rdf:type owl:Class ;
-     rdfs:subClassOf :LifeCycleAssesment .
+     rdfs:subClassOf :LifeCycleAssesment ;
+     rdfs:comment "Operational Phase of the Energy System" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#UseMaintenance
 :UseMaintenance rdf:type owl:Class ;
-                rdfs:subClassOf :Use .
+                rdfs:subClassOf :Use ;
+                rdfs:comment "LCA analysis during the maintenance period" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#WasteProcess
 :WasteProcess rdf:type owl:Class ;
-              rdfs:subClassOf :EndofLife .
+              rdfs:subClassOf :EndofLife ;
+              rdfs:comment "Special process required for the management of disposals" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Wind
 :Wind rdf:type owl:Class ;
       rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
-      rdfs:label "Wind Turbines (small scale)" .
+      rdfs:comment "Wind Turbines (small scale)" ;
+      rdfs:label "Wind Turbine" .
 
 
 ###  https://saref.etsi.org/saref#Device
@@ -381,6 +460,14 @@
                                                       [ rdf:type owl:Restriction ;
                                                         owl:onProperty :hasCost ;
                                                         owl:allValuesFrom :LifeCycleCost
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                                        owl:someValuesFrom xsd:string
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                                        owl:someValuesFrom xsd:string
                                                       ] .
 
 
@@ -403,6 +490,10 @@
                                                        [ rdf:type owl:Restriction ;
                                                          owl:onProperty :refersTo ;
                                                          owl:allValuesFrom :BaselineProfile
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                                         owl:someValuesFrom xsd:string
                                                        ] ,
                                                        [ rdf:type owl:Restriction ;
                                                          owl:onProperty :hasEndTime ;
@@ -428,6 +519,17 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Transport
 :Transport rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Disposal rdfs:comment "The disposal  of Energy System" ;
+          rdfs:label "Disposal Phase" .
+
+
+:Transport rdfs:comment "Transport of Energy Systems Disposals" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
