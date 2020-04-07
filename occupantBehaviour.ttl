@@ -23,54 +23,6 @@
 
 
 #################################################################
-#    Datatypes
-#################################################################
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Feedback
-:Feedback rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#HVAC
-:HVAC rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Humidity
-:Humidity rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Inaction
-:Inaction rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Lights
-:Lights rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Luminance
-:Luminance rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Radiator
-:Radiator rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#SystemAction
-:SystemAction rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#Temperature
-:Temperature rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#weekend
-:weekend rdf:type rdfs:Datatype .
-
-
-###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#workday
-:workday rdf:type rdfs:Datatype .
-
-
-#################################################################
 #    Object Properties
 #################################################################
 
@@ -141,39 +93,31 @@
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#actionType
 :actionType rdf:type owl:DatatypeProperty ;
-            rdfs:range :Feedback ,
-                       :Inaction ,
-                       :SystemAction .
+            rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#actuationName
 :actuationName rdf:type owl:DatatypeProperty ;
-               rdfs:range :HVAC ,
-                          :Lights ,
-                          :Radiator .
+               rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#age
 :age rdf:type owl:DatatypeProperty ;
-     rdfs:subPropertyOf owl:topDataProperty ;
      rdfs:range xsd:integer .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#comfortName
 :comfortName rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#comfortType
 :comfortType rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#comfortVersion
 :comfortVersion rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
                 rdfs:range xsd:integer .
 
 
@@ -182,9 +126,7 @@
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#date
-:date rdf:type owl:DatatypeProperty ;
-      rdfs:range :weekend ,
-                 :workday .
+:date rdf:type owl:DatatypeProperty .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#description
@@ -197,25 +139,21 @@
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#gender
 :gender rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#hasActivityName
 :hasActivityName rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf owl:topDataProperty ;
                  rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#jobtype
 :jobtype rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf owl:topDataProperty ;
          rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#lifestyle
 :lifestyle rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf owl:topDataProperty ;
            rdfs:range xsd:string .
 
 
@@ -229,18 +167,16 @@
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#observationName
 :observationName rdf:type owl:DatatypeProperty ;
-                 rdfs:range :Humidity ,
-                            :Luminance ,
-                            :Temperature .
+                 rdfs:range xsd:string .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#occupantsNumber
-:occupantsNumber rdf:type owl:DatatypeProperty .
+:occupantsNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:integer .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/occupantBehaviour.ttl#priority
 :priority rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:range xsd:string .
 
 
