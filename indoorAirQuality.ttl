@@ -174,66 +174,67 @@ The puspose of the  ontology is to provide an operational framework for the orch
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasAirExchangeRate
 :hasAirExchangeRate rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:float ;
                     rdfs:comment "The air exchange rate for a specific building zone" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
                 rdfs:comment "A class has a specific description" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasEffectiveDate
 :hasEffectiveDate rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:dateTime ;
                   rdfs:comment "A  regulation has an effective date" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasEndTime
 :hasEndTime rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:dateTime ;
             rdfs:comment "End time of a process" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasIAQType
 :hasIAQType rdf:type owl:DatatypeProperty ;
-            rdfs:range :CO ,
-                       :CO2 ,
-                       :NOx ,
-                       :PM10 ,
-                       :PM25 ,
-                       :tVOC ;
+            rdfs:range xsd:string ;
             rdfs:comment "IAQ types of interest" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasMaxConstraint
 :hasMaxConstraint rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:float ;
                   rdfs:comment "The value has a max constraint" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasName
 :hasName rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string ;
          rdfs:comment "the class has a name" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasPublisher
 :hasPublisher rdf:type owl:DatatypeProperty ;
-              rdfs:range :ISO450001 ,
-                         :WHO ;
+              rdfs:range xsd:string ;
               rdfs:comment "the regulation has an authority responsible for" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasSourceRate
 :hasSourceRate rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:float ;
                rdfs:comment "The resource rate of a specific IAQ source" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasStartTime
 :hasStartTime rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:dateTime ;
               rdfs:comment "The class has a start time" .
 
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#hasType
 :hasType rdf:type owl:DatatypeProperty ;
-         rdfs:range :Allergy ,
-                    :Disease ;
+         rdfs:range xsd:string ;
          rdfs:comment "A health issue has a specific type" .
 
 
@@ -243,6 +244,7 @@ The puspose of the  ontology is to provide an operational framework for the orch
 
 ###  https://github.com/Suite5/bim4eeb-ontologies/blob/master/indoorAirQuality.ttl#timeStamp
 :timeStamp rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:dateTime ;
            rdfs:comment "A specific timestamp for an observation" .
 
 

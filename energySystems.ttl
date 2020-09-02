@@ -7,7 +7,7 @@
 @base <https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl> .
 
 <https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl> rdf:type owl:Ontology ;
-                                                                                     owl:imports <https://saref.etsi.org/saref> ;
+                                                                                     owl:imports <https://saref.etsi.org/core/v3.1.1/> ;
                                                                                      <http://purl.org/dc/terms/description> "This is the BIM4EEB Ontology for energy services. An extension of SAREF to address LCA parameters for the energy systems to be considered in a renovation project" ;
                                                                                      <http://purl.org/dc/terms/license> "This ontology is distributed under Apache License Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)" ;
                                                                                      <http://purl.org/dc/terms/publisher> "SUITE5" ;
@@ -17,16 +17,16 @@
 #    Object Properties
 #################################################################
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasCost
-:hasCost rdf:type owl:ObjectProperty ;
-         rdfs:comment "the device/ energy system is associated with an operational cost" ;
-         rdfs:label "has Cost" .
-
-
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasEnergyStatistics
 :hasEnergyStatistics rdf:type owl:ObjectProperty ;
                      rdfs:comment "An energy system has some typical energy statistics" ;
                      rdfs:label "has Energy Statistics" .
+
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasFlexibility
+:hasFlexibility rdf:type owl:ObjectProperty ;
+                rdfs:comment "the flexibility value associated with a specific service" ;
+                rdfs:label "has flexibility" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasLCC
@@ -53,15 +53,17 @@
            rdfs:label "has Reward" .
 
 
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#refersTo
-:refersTo rdf:type owl:ObjectProperty ;
-          rdfs:comment "A service of an energy system has as a reference an baseline profile" ;
-          rdfs:label "refers To" .
+###  https://saref.etsi.org/core#isMeasuredIn
+<https://saref.etsi.org/core#isMeasuredIn> rdf:type owl:ObjectProperty .
 
 
 #################################################################
 #    Data properties
 #################################################################
+
+###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty .
+
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#hasDuration
 :hasDuration rdf:type owl:DatatypeProperty ;
@@ -121,26 +123,30 @@
 :hasValue rdf:type owl:DatatypeProperty .
 
 
+###  https://saref.etsi.org/core#hasName
+<https://saref.etsi.org/core#hasName> rdf:type owl:DatatypeProperty .
+
+
+###  https://saref.etsi.org/core#hasValue
+<https://saref.etsi.org/core#hasValue> rdf:type owl:DatatypeProperty .
+
+
 #################################################################
 #    Classes
 #################################################################
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ActuatorLevel
 :ActuatorLevel rdf:type owl:Class ;
-               rdfs:subClassOf <https://saref.etsi.org/saref#Actuator> ;
+               rdfs:subClassOf <https://saref.etsi.org/core/Actuator> ;
                rdfs:comment "Independent from the ActuatorSwitch class, the ActuatorLevel class enables a user or application to model LEVEL commands (start, up, percentageAbsolute, relative, etc.). This can be used to dim a light, set the speed of an electric motor, etc." ;
                rdfs:label "Actuator Level" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#BaselineProfile
 :BaselineProfile rdf:type owl:Class ;
-                 rdfs:subClassOf <https://saref.etsi.org/saref#Profile> ,
+                 rdfs:subClassOf <https://saref.etsi.org/core/Profile> ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
-                                   owl:someValuesFrom xsd:string
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                   owl:onProperty <https://saref.etsi.org/core#hasName> ;
                                    owl:someValuesFrom xsd:string
                                  ] ;
                  rdfs:comment "Along wiht the actual profile, the baseline profile of each device should be defined for the participation in energy services" ;
@@ -149,14 +155,14 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Batteries
 :Batteries rdf:type owl:Class ;
-           rdfs:subClassOf <https://saref.etsi.org/saref#Storage> ;
+           rdfs:subClassOf <https://saref.etsi.org/core#Storage> ;
            rdfs:comment "Residential, behind the meter battery system" ;
            rdfs:label "Battery Storage" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#CHP
 :CHP rdf:type owl:Class ;
-     rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+     rdfs:subClassOf <https://saref.etsi.org/core#Generator> ;
      rdfs:comment "Small CHPs for local generation" ;
      rdfs:label "Combined Heat  & Power" .
 
@@ -170,7 +176,7 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ComfortManagement
 :ComfortManagement rdf:type owl:Class ;
-                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                   rdfs:subClassOf <https://saref.etsi.org/core/Service> ;
                    rdfs:comment "An automation service offered to the users on the way to ensure comfort preservation" ;
                    rdfs:label "Comfort Preservation" .
 
@@ -202,7 +208,7 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#DieselGen
 :DieselGen rdf:type owl:Class ;
-           rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+           rdfs:subClassOf <https://saref.etsi.org/core#Generator> ;
            rdfs:comment "Small Diesel Generator for back up" ;
            rdfs:label "Diesel Generator" .
 
@@ -214,7 +220,7 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#EV
 :EV rdf:type owl:Class ;
-    rdfs:subClassOf <https://saref.etsi.org/saref#Storage> ;
+    rdfs:subClassOf <https://saref.etsi.org/core#Storage> ;
     rdfs:comment "Charging points and the associated EVs" ;
     rdfs:label "Electric Vehicles" .
 
@@ -249,16 +255,9 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Flexibility
 :Flexibility rdf:type owl:Class ;
-             rdfs:subClassOf <https://saref.etsi.org/saref#Property> ;
+             rdfs:subClassOf <https://saref.etsi.org/core/Property> ;
              rdfs:comment "Energy System Flexibility" ;
              rdfs:label "Flexibility" .
-
-
-###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#HVAC
-:HVAC rdf:type owl:Class ;
-      rdfs:subClassOf <https://saref.etsi.org/saref#Load> ;
-      rdfs:comment "Heating Cooling and Ventilation systems" ;
-      rdfs:label "HVAC Systems" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleAssesment
@@ -268,11 +267,7 @@
                                       owl:allValuesFrom :LifeCycleCost
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
-                                      owl:someValuesFrom xsd:string
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty <https://saref.etsi.org/saref#hasName> ;
+                                      owl:onProperty <https://saref.etsi.org/core#hasName> ;
                                       owl:someValuesFrom xsd:string
                                     ] ,
                                     [ rdf:type owl:Restriction ;
@@ -294,19 +289,11 @@
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#LifeCycleCost
 :LifeCycleCost rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                 owl:onProperty <https://saref.etsi.org/saref#isMeasuredIn> ;
-                                 owl:allValuesFrom <https://saref.etsi.org/saref#Currency>
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
+                                 owl:onProperty <https://saref.etsi.org/core#hasName> ;
                                  owl:someValuesFrom xsd:string
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty <https://saref.etsi.org/saref#hasName> ;
-                                 owl:someValuesFrom xsd:string
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty <https://saref.etsi.org/saref#hasValue> ;
+                                 owl:onProperty <https://saref.etsi.org/core#hasValue> ;
                                  owl:allValuesFrom xsd:float
                                ] ;
                rdfs:comment "Lifecycle Cost Parameters for the Energy Systems" ;
@@ -347,7 +334,7 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#PV
 :PV rdf:type owl:Class ;
-    rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+    rdfs:subClassOf <https://saref.etsi.org/core#Generator> ;
     rdfs:comment "Small scale Photovoltaics" ;
     rdfs:label "Rooftop PVs" .
 
@@ -394,30 +381,26 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Reward
 :Reward rdf:type owl:Class ;
-        rdfs:subClassOf <https://saref.etsi.org/saref#Property> ;
+        rdfs:subClassOf <https://saref.etsi.org/core/Property> ;
         rdfs:comment "This is the reward from participating in innovative Energy Services (like DR)" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#SelfConsumption
 :SelfConsumption rdf:type owl:Class ;
-                 rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                 rdfs:subClassOf <https://saref.etsi.org/core/Service> ;
                  rdfs:comment "This is the service about self consumption optimization.. Balancing local generation with demand" ;
                  rdfs:label "Self Consumption Optimization" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#ServiceAggregator
 :ServiceAggregator rdf:type owl:Class ;
-                   rdfs:subClassOf <https://saref.etsi.org/saref#Service> ;
+                   rdfs:subClassOf <https://saref.etsi.org/core/Service> ;
                    rdfs:comment "This is the load control from 3rd party aggregators to enable participation in DR markets (services to DSOs, anchillary services etc...)" ;
                    rdfs:label "Service to Aggregator" .
 
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Statistics
 :Statistics rdf:type owl:Class ;
-            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
-                              owl:someValuesFrom xsd:string
-                            ] ;
             rdfs:comment "Generic energy and power statistics that characterize the daily curve of each eneryg related device" ;
             rdfs:label "Energy Statistics" .
 
@@ -447,62 +430,74 @@
 
 ###  https://github.com/SUITE5-Energy/bim4eeb-ontologies/blob/master/energySystems.ttl#Wind
 :Wind rdf:type owl:Class ;
-      rdfs:subClassOf <https://saref.etsi.org/saref#Generator> ;
+      rdfs:subClassOf <https://saref.etsi.org/core#Generator> ;
       rdfs:comment "Wind Turbines (small scale)" ;
       rdfs:label "Wind Turbine" .
 
 
-###  https://saref.etsi.org/saref#Device
-<https://saref.etsi.org/saref#Device> rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasLifeCycleParameters ;
-                                                        owl:someValuesFrom :LifeCycleAssesment
+###  https://saref.etsi.org/core#Generator
+<https://saref.etsi.org/core#Generator> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://saref.etsi.org/core/Device> ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasEnergyStatistics ;
+                                                          owl:someValuesFrom :Energy
+                                                        ] ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPowerStatistics ;
+                                                          owl:someValuesFrom :Power
+                                                        ] .
+
+
+###  https://saref.etsi.org/core#Load
+<https://saref.etsi.org/core#Load> rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://saref.etsi.org/core/Device> ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasEnergyStatistics ;
+                                                     owl:someValuesFrom :Energy
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasPowerStatistics ;
+                                                     owl:someValuesFrom :Power
+                                                   ] .
+
+
+###  https://saref.etsi.org/core#Storage
+<https://saref.etsi.org/core#Storage> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://saref.etsi.org/core/Device> .
+
+
+###  https://saref.etsi.org/core/Device
+<https://saref.etsi.org/core/Device> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasLCC ;
+                                                       owl:someValuesFrom :LifeCycleCost
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasLifeCycleParameters ;
+                                                       owl:someValuesFrom :LifeCycleAssesment
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasDescription ;
+                                                       owl:someValuesFrom xsd:string
+                                                     ] .
+
+
+###  https://saref.etsi.org/core/Service
+<https://saref.etsi.org/core/Service> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasEnergyStatistics ;
+                                                        owl:someValuesFrom :Energy
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasCost ;
-                                                        owl:allValuesFrom :LifeCycleCost
+                                                        owl:onProperty :hasFlexibility ;
+                                                        owl:someValuesFrom :Flexibility
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
-                                                        owl:someValuesFrom xsd:string
+                                                        owl:onProperty :hasPowerStatistics ;
+                                                        owl:someValuesFrom :Power
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty <https://saref.etsi.org/saref#hasName> ;
-                                                        owl:someValuesFrom xsd:string
+                                                        owl:onProperty :hasReward ;
+                                                        owl:someValuesFrom :Reward
                                                       ] .
-
-
-###  https://saref.etsi.org/saref#EnergyRelated
-<https://saref.etsi.org/saref#EnergyRelated> rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :hasEnergyStatistics ;
-                                                               owl:allValuesFrom :Energy
-                                                             ] ,
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :hasPowerStatistics ;
-                                                               owl:allValuesFrom :Power
-                                                             ] .
-
-
-###  https://saref.etsi.org/saref#Service
-<https://saref.etsi.org/saref#Service> rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasReward ;
-                                                         owl:allValuesFrom :Reward
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :refersTo ;
-                                                         owl:allValuesFrom :BaselineProfile
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty <https://saref.etsi.org/saref#hasDescription> ;
-                                                         owl:someValuesFrom xsd:string
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasEndTime ;
-                                                         owl:allValuesFrom xsd:dateTime
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasStartTime ;
-                                                         owl:allValuesFrom xsd:dateTime
-                                                       ] .
 
 
 #################################################################
